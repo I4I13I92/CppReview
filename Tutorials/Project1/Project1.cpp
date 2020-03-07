@@ -1,28 +1,38 @@
-#include <array>
-#include <iostream>
-#include <string_view>
-#include <tuple>
-#include <type_traits>
-
-namespace a::b::c
-{
-    inline constexpr std::string_view str{ "hello" };
-}
-
-template <class... T>
-std::tuple<std::size_t, std::common_type_t<T...>> sum(T... args)
-{
-    return { sizeof...(T), (args + ...) };
-}
+#include <iostream>//prepocrocessor directive
 
 int main()
 {
-    auto [iNumbers, iSum] { sum(1, 2, 3) };
-    std::cout << a::b::c::str << ' ' << iNumbers << ' ' << iSum << '\n';
+    /*Comments always felt forced when I wrote them, 
+    I need to be better with them*/
 
-    std::array arr{ 1, 2, 3 };
 
-    std::cout << std::size(arr) << '\n';
+    /*int a {};
+    int b {3};
+    double c {3.7};
+    float d { 0 };*/
+
+   /* std::cout << "Enter a number for a \n"; // << insertion operator
+    std::cin >> a; // >>, extraction operator
+
+    std::cout << "a is: " << a << std::endl;
+    std::cout << "b is: " << b << std::endl;
+    std::cout << "c is: " << c << std::endl;
+    std::cout << "d is: " << d << std::endl;
+
+    std::cout << "values of a, b, c, and d respectively: " 
+        << a << ", " << b << ", " << c << ", and " << d<< std::endl;*/
+
+    //test 1
+
+    //program to ask for input(int), then multiply by 2
+    int x{ 0 };
+
+    std::cout << "Enter an integer: ";
+    std::cin >> x;
+
+    //std::cout << "Entered integer: " << x << '\n';
+    std::cout << "Double that number: " << x * 2 << '\n';
+    std::cout << "Triple that number: " << x * 3 << '\n';
 
     return 0;
 }
