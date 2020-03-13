@@ -156,6 +156,7 @@
     <ClCompile Include="Project6.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="foo.h" />
     <ClInclude Include="goo.h" />
   </ItemGroup>

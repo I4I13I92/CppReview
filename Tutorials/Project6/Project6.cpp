@@ -3,13 +3,16 @@
 #include "foo.h"
 #include "goo.h"
 
+//6.8.1
+#include "CONSTANTS.H";
+
 
 int main()
 {
 	//std::cout << goo::doSomething(3, 4) << '\n';
 
 	///6.3 Quiz
-	int x{};
+	/*int x{};
 	int y{};
 
 	std::cout << "Enter an Integer: ";
@@ -31,8 +34,13 @@ int main()
 	}
 
 	std::cout << "The smaller integer is: " << x << '\n';
-	std::cout << "The larger integer is: " << y << '\n';
+	std::cout << "The larger integer is: " << y << '\n';*/
 
+	std::cout << "Enter a radius: ";
+	int radius{};
+	std::cin >> radius;
+
+	std::cout << "The circumference is: " << 2 * radius * constants::pi << '\n';
 
 
 	//both x and y are destroyed here
