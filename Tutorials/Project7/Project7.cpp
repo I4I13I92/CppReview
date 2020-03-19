@@ -3,18 +3,85 @@
 
 #include <iostream>
 
-int main()
+//return by address
+int doubleValue(int x)
 {
-    std::cout << "Hello World!\n";
+    int value{ x * 2 };
+    return value;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+//return by address
+/*int* tripleValue(int y)
+{
+    //not acceptable, must only do so when with formal parameter!
+    int value{ y * 3 };
+    return &value;
+}*/
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+//return by reference
+/*int& quadValue(int x)
+{
+    //same rule as returning by address!
+    int value{ x * 2 };
+    return value;
+}*/
+
+int sumTo(int x)
+{
+    return x;
+}
+//7.6-function overloading
+int add(int a, int b)
+{
+    return a + b;
+}
+
+double add(double a, double b)
+{
+    return a + b;
+}
+
+//7.7 default arguemnets, if must do so in forward declaration within a header 
+void printValues(int x, int y = 10)
+{
+    std::cout << "x: " << x << '\n';
+    std::cout << "y: " << x << '\n';
+}
+
+void printValues(int x = 10, int y = 20, int z = 30)
+{
+    std::cout << "Values: " << x << " " << y << " " << z << '\n';
+}
+
+//7.8function pointers
+int foo(int x)
+{
+    std::cout << x << '\n';
+    return x;
+}
+
+int goo(int x)
+{
+    std::cout <<"Enter value for x: ";
+    std::cin >> x;
+    std::cout << x << '\n';
+    return x;
+}
+
+int main(int argc, char **argv)
+{
+    //7.8
+    /*int (*fcnPtr)(int) { foo };
+    fcnPtr(5);
+    fcnPtr = goo;
+    fcnPtr(6);
+    return 0;*/
+
+    //7.13 command line arguements
+    std::cout << "There are " << argc << " arguemnets:\n";
+    for (int count { 0 }; count < argc; ++count)
+    {
+        std::cout << count << " " << argv[count] << "\n";
+    }
+    return 0;
+}
