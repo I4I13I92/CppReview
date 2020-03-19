@@ -15,6 +15,11 @@ void writeAnswer(int x)
 }
 
 double ballHeight(double height, int seconds);
+void displayHeight(double height, int seconds);
+double Height();
+
+int getGuessedNumber();
+bool guessGame(int num_to_guess);
 
 void d()
 { // here
@@ -84,5 +89,29 @@ int main()
 
 	return 0;*/
 
+	//Quiz chp 5#1
+	/*double height;
+	height = Height();
+	int seconds{ 0 };
+	std::cout << height << '\n';
 
+	while (height > 0.0)
+	{
+		height = ballHeight(height, seconds);
+		displayHeight(height, seconds);
+		++seconds;
+	}*/
+
+	//Quiz chp 5#2
+	bool playing{ true };
+
+	std::cout << "Let's play a game!";
+
+	//keep looping if the player wishes to replay the game
+	while (playing)
+	{
+		playing = guessGame(getGuessedNumber());
+	}
+
+	return 0;
 }
