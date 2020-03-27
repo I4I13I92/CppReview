@@ -17,6 +17,13 @@ void Fraction::print()
 	std::cout << numerator << "/" << denominator << '\n';
 }
 
+//overload unary +
+
+void Fraction::operator++() 
+{
+	numerator = numerator + denominator;
+}
+
 //overload multiplication operator for fraction and int
 Fraction operator*(int a, const Fraction &b)
 {

@@ -8,6 +8,7 @@ public:
 	Fraction(int n, int d);
 	void print();
 
+	void operator++();
 	friend Fraction operator*(int a, const Fraction &b);
 	friend Fraction operator*(const Fraction &a, int b);
 	friend Fraction operator*(const Fraction &a, const Fraction &b);

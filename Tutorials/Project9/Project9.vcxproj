@@ -149,11 +149,20 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Car.cpp" />
+    <ClCompile Include="Cents.cpp" />
     <ClCompile Include="Fraction.cpp" />
+    <ClCompile Include="GradeMap.cpp" />
     <ClCompile Include="Project9.cpp" />
+    <ClCompile Include="String.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Car.h" />
+    <ClInclude Include="Cents.h" />
     <ClInclude Include="Fraction.h" />
+    <ClInclude Include="GradeMap.h" />
+    <ClInclude Include="String.h" />
+    <ClInclude Include="StudentGrade.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
