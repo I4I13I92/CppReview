@@ -9,8 +9,6 @@ int main()
     LinkedList myList;
 
 
-
-
     myList.insert(5);
     //myList.insert(7);
 

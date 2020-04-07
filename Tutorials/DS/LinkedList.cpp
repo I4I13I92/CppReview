@@ -5,10 +5,12 @@
 //default constructor
 LinkedList::LinkedList()					
 {
+	this->head = nullptr;					//set head to nullptr
+	this->tail = nullptr;					//set tail to nullptr
 	this->length = 0;						//set the length of the list to 0 upon initialization
 }
 
-//Destructor to delete dynamic data/pointers.
+//Destructor to delete dynamic nodes.
 //Will iterate through linked list to delete each node individually
 LinkedList::~LinkedList()					
 {
@@ -19,21 +21,23 @@ LinkedList::~LinkedList()
 	}
 	else
 	{
-		Node* temp;							//node that will point to data that will be deleted 
+		Node* temp;							//node that will point to data to be deleted 
 
 		
-		while (this->head->next != nullptr) //iterate through linked list til tail is hit
+		while (this->head->next != nullptr) //iterate through linked list til the tail is hit
 		{
 			
-			temp = this->head;				//store the current head that will be in deleted in temp 
+			temp = this->head;				//store the current head that will be deleted through temp 
 			this->head = this->head->next;  //update the head be the next following node in the list 
 			delete temp;					//delete the node 
 		}
 
-		delete this->head;					//delete the data pointed to by head, no need to delete tail since both H/T point to the same location
+		delete this->head;					//delete the data pointed to by head, no need to delete tail since both H/T point to the same location at this point
 	}
 }
 
+//NEED TO INCLUDE ELSE/IF FOR HEAD
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 void LinkedList::insert(int value)			//insert a value(Node), into the front of the linked list
 {
 	Node* currNode = new Node;				//dynamically allocote node to that will be inserted
@@ -52,15 +56,47 @@ void LinkedList::insert(int value)			//insert a value(Node), into the front of t
 	}
 }
 
+//NEED TO INCLUDE ELSE/IF FOR HEAD
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 void LinkedList::remove(int value)
 {
-	int x = value + 4;
-	std::cout << x;
+	if (this->isEmpty())
+	{
+		std::cout << "List is empty, there is nothing to remove.\n";
+	}
+	else
+	{
+		Node* prev_node = this->head;						//node pointer to hold previous node in list 
+		Node* curr_node = this->head->next;					//node to be deleted, starting with the second node in list			
+
+		while (curr_node->next != nullptr)					//while loop to begin iteration starting at the second node
+		{
+			if (curr_node->value == value)					//check to see if the values match
+			{
+				prev_node->next = curr_node->next;			//have the previous node point to the current node's proceding node to not lose the link
+				delete curr_node;							//delete and remove the current node from the list
+				return;										//return from function no need to continue, FOR NOW, NEED TO CONSIDER SITUATION WHERE VALUE IS... 
+															//STORED MULTIPLE TIMES IN THE LIST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+			}
+		}
+	}
 }
 
-int LinkedList::find(int value)
+//check to see if list contains node with a specific value
+bool LinkedList::find(int value)
 {
-	return value;
+	Node* curr_node;						//node to iterate through
+	curr_node = this->head;		 			//set node to the haed
+
+	while (curr_node->next != nullptr)	//while loop to begin iteration through list
+	{
+		if (curr_node->value == value)	//return true if value is contained within the List
+		{
+			return true;
+		}
+	}
+
+	return false;					//return false if value is not found in List
 }
 
 //Returns the current length of the List.
@@ -70,15 +106,24 @@ int LinkedList::getLength()
 }
 
 //Prints each value of all nodes in the List
-//INCOMPLETE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 void LinkedList::printList()
 {
 	if (this->isEmpty())							//check to see if List is empty or not
 	{
-		std::cout << "Linked List is empty.\n";		
+		std::cout << "Linked List is empty.\n";
 	}
 	else
 	{
+		Node* curr_node;
+		curr_node = this->head;						//set the head to current node to begin iteration
+
+		while (curr_node->next != nullptr)			//start looping through the list as long as the next node is not nullpointer  
+		{
+			std::cout << curr_node->value << " \n";//display the value of the current node
+			curr_node = curr_node->next;		   //set the current node to be to next node 
+		}
+
+		std::cout << this->getTail() << '\n';	  //Since the last node's value won't be printed, print the tail's value to console through getTail method
 	}
 
 }

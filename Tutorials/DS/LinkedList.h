@@ -15,7 +15,7 @@ public:
 	~LinkedList();
 	void insert(int value);
 	void remove(int value);
-	int find(int value);
+	bool find(int value);
 	int getLength();
 	void printList();
 	bool isEmpty();
