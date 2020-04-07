@@ -1,0 +1,2 @@
+C:\Users\Victor\C++\Tutorials\cplusplus\Debug\cplusplus.exe
+C:\Users\Victor\C++\Tutorials\cplusplus\Debug\cplusplus.pdb

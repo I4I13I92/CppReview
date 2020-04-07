@@ -1,0 +1,10 @@
+﻿  cplusplus.cpp
+C:\Users\Victor\C++\Tutorials\cplusplus\cplusplus.cpp(74,19): warning C4459: declaration of 'a' hides global declaration
+C:\Users\Victor\C++\Tutorials\cplusplus\cplusplus.cpp(25,9): message : see declaration of 'myNamespace::a'
+C:\Users\Victor\C++\Tutorials\cplusplus\cplusplus.cpp(74,29): warning C4459: declaration of 'b' hides global declaration
+C:\Users\Victor\C++\Tutorials\cplusplus\cplusplus.cpp(26,12): message : see declaration of 'myNamespace::b'
+C:\Users\Victor\C++\Tutorials\cplusplus\cplusplus.cpp(79,13): warning C4459: declaration of 'a' hides global declaration
+C:\Users\Victor\C++\Tutorials\cplusplus\cplusplus.cpp(25,9): message : see declaration of 'myNamespace::a'
+C:\Users\Victor\C++\Tutorials\cplusplus\cplusplus.cpp(79,20): warning C4459: declaration of 'b' hides global declaration
+C:\Users\Victor\C++\Tutorials\cplusplus\cplusplus.cpp(26,12): message : see declaration of 'myNamespace::b'
+  cplusplus.vcxproj -> C:\Users\Victor\C++\Tutorials\cplusplus\Debug\cplusplus.exe
