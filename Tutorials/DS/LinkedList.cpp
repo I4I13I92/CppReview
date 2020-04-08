@@ -19,10 +19,15 @@ LinkedList::~LinkedList()
 	{
 		return;
 	}
+	else if (this->head == this->tail)
+	{
+		delete this->head;
+		this->head = nullptr;
+		this->tail = nullptr;
+	}
 	else
 	{
 		Node* temp;							//node that will point to data to be deleted 
-
 		
 		while (this->head->next != nullptr) //iterate through linked list til the tail is hit
 		{
@@ -33,6 +38,8 @@ LinkedList::~LinkedList()
 		}
 
 		delete this->head;					//delete the data pointed to by head, no need to delete tail since both H/T point to the same location at this point
+		this->head = nullptr;
+		this->tail = nullptr;
 	}
 }
 
@@ -49,14 +56,24 @@ void LinkedList::insert(int value)			//insert a value(Node), into the front of t
 		this->tail = currNode;
 		this->length++;						//increment the length by 1
 	}
+	else if(this->head == this->tail)
+	{
+		Node* temp_node = this->head;
+		this->head = currNode;
+		std::cout << this->head->value << ", " << temp_node->value << '\n';
+		currNode->next = temp_node;
+		std::cout << this->head->value << ", " << this->tail->value << '\n';
+		this->length++;
+	}
 	else                                    //if node is not empty, update the head of list to the newly inserted node
 	{
 		currNode->next = this->head;		//have the new node point to the current HEAD 
 		this->head = currNode;				//set the new node to be the HEAD 
+		this->length++;
 	}
 }
 
-//NEED TO INCLUDE ELSE/IF FOR HEAD
+//remove a node who's value matches passed value paramter
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 void LinkedList::remove(int value)
 {
@@ -64,7 +81,13 @@ void LinkedList::remove(int value)
 	{
 		std::cout << "List is empty, there is nothing to remove.\n";
 	}
-	else
+	else if (this->head->value = value)						//check to see if value matches head
+	{
+		Node* node_to_del = this->head;						//node is assigned head in order delete 
+		this->head = this->head->next;						//update the head to be the second node in list
+		delete node_to_del;									//delete the previous head from list
+	}
+	else                                                    //otherwise delete node containing value if it exists
 	{
 		Node* prev_node = this->head;						//node pointer to hold previous node in list 
 		Node* curr_node = this->head->next;					//node to be deleted, starting with the second node in list			
@@ -83,16 +106,33 @@ void LinkedList::remove(int value)
 }
 
 //check to see if list contains node with a specific value
+//Complete comments!
 bool LinkedList::find(int value)
 {
-	Node* curr_node;						//node to iterate through
-	curr_node = this->head;		 			//set node to the haed
 
-	while (curr_node->next != nullptr)	//while loop to begin iteration through list
+	if (this->isEmpty())
 	{
-		if (curr_node->value == value)	//return true if value is contained within the List
+		std::cout << "List is empty!\n";
+		return false;
+	}
+	else if (this->head == this->tail)
+	{
+		if (this->head->value == value)
 		{
 			return true;
+		}
+	}
+	else
+	{
+		Node* curr_node;						//node to iterate through
+		curr_node = this->head;		 			//set node to the haed
+
+		while (curr_node->next != nullptr)	//while loop to begin iteration through list
+		{
+			if (curr_node->value == value)	//return true if value is contained within the List
+			{
+				return true;
+			}
 		}
 	}
 
@@ -111,6 +151,10 @@ void LinkedList::printList()
 	if (this->isEmpty())							//check to see if List is empty or not
 	{
 		std::cout << "Linked List is empty.\n";
+	}
+	else if (this->head == this->tail)
+	{
+		std::cout << this->head->value << '\n';
 	}
 	else
 	{
