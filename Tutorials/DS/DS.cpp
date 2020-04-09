@@ -10,6 +10,7 @@ int main()
 
     myList.insert(5);
     myList.insert(7);
+    myList.insert(9);
     myList.printList();
 
     

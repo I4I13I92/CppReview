@@ -58,12 +58,9 @@ void LinkedList::insert(int value)			//insert a value(Node), into the front of t
 	}
 	else if(this->head == this->tail)
 	{
-		Node* temp_node = this->head;
-		this->head = currNode;
-		std::cout << this->head->value << ", " << temp_node->value << '\n';
-		currNode->next = temp_node;
-		std::cout << this->head->value << ", " << this->tail->value << '\n';
-		this->length++;
+		currNode->next = this->head;		//have the new node to be inserted point to the current head of the list
+		this->head = currNode;				//have the head of the list to point newly inserted node 
+		this->length++;						//increment length
 	}
 	else                                    //if node is not empty, update the head of list to the newly inserted node
 	{
@@ -194,5 +191,5 @@ int LinkedList::getHead()
 //returns value of the tail
 int LinkedList::getTail()
 {
-	return this->head->value;		//return value of tail node
+	return this->tail->value;		//return value of tail node
 }
