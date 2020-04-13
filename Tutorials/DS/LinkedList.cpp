@@ -19,7 +19,7 @@ LinkedList::~LinkedList()
 	{
 		return;
 	}
-	else if (this->head == this->tail)
+	else if (this->head == this->tail)		//check to sse if the head and tail are the same
 	{
 		delete this->head;
 		this->head = nullptr;
@@ -43,8 +43,8 @@ LinkedList::~LinkedList()
 	}
 }
 
-//NEED TO INCLUDE ELSE/IF FOR HEAD
-//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//
+//
 void LinkedList::insert(int value)			//insert a value(Node), into the front of the linked list
 {
 	Node* currNode = new Node;				//dynamically allocote node to that will be inserted
@@ -78,11 +78,36 @@ void LinkedList::remove(int value)
 	{
 		std::cout << "List is empty, there is nothing to remove.\n";
 	}
-	else if (this->head->value = value)						//check to see if value matches head
+	else if(this->length == 1 && this->head->value == value)//check to see if a single node list will be deleted
+	{
+		delete this->head;									//delete the head and make H/T both store a null pointer
+
+		this->tail = nullptr;
+		this->head = nullptr;
+		this->length--;
+	}
+	else if(this->head->value == value)						//check to see if value matches head in order to delete
 	{
 		Node* node_to_del = this->head;						//node is assigned head in order delete 
-		this->head = this->head->next;						//update the head to be the second node in list
+		this->head = node_to_del->next;						//update the head to be the second node in list
 		delete node_to_del;									//delete the previous head from list
+		this->length--;
+	}
+	else if (this->tail->value == value)
+	{
+		Node* pre_ultimate_node = this->head;				//pre ultimate node that will be updated to be the new tail
+
+		while (pre_ultimate_node->next != nullptr)
+		{
+			if (pre_ultimate_node->next == this->tail)		//check to see if the proceding node is the tail
+			{
+				delete this->tail;							
+				this->tail = pre_ultimate_node;				//make the pre ultimate node the new tail; 
+				this->length;
+			}
+
+			pre_ultimate_node = pre_ultimate_node->next;	//update the node to be the proceding node
+		}
 	}
 	else                                                    //otherwise delete node containing value if it exists
 	{
@@ -95,6 +120,7 @@ void LinkedList::remove(int value)
 			{
 				prev_node->next = curr_node->next;			//have the previous node point to the current node's proceding node to not lose the link
 				delete curr_node;							//delete and remove the current node from the list
+				this->length--;
 				return;										//return from function no need to continue, FOR NOW, NEED TO CONSIDER SITUATION WHERE VALUE IS... 
 															//STORED MULTIPLE TIMES IN THE LIST!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 			}
@@ -130,6 +156,8 @@ bool LinkedList::find(int value)
 			{
 				return true;
 			}
+
+			curr_node = curr_node->next;
 		}
 	}
 
